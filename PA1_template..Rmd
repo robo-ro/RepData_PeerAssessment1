@@ -1,6 +1,6 @@
 ---
 title: "Course Project 1 - Reproducible Research"
-author: "Sakshi Goenka
+author: "Sakshi Goenka"
 date: "May 01, 2021"
 output: html_document
 ---
