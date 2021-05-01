@@ -7,6 +7,8 @@ output:
 
 
 ## Loading and preprocessing the data
+
+```{r, echo = TRUE}
 if(!file.exists("getdata-projectfiles-UCI HAR Dataset.zip")) {
         temp <- tempfile()
         download.file("http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip",temp)
@@ -32,8 +34,10 @@ mean_raw
 median_raw<-median(totalStepsByDay$steps)
 median_raw
 
-
+```
 ## What is the average daily activity pattern?
+
+```{r, echo = TRUE}
 
 averageStepsbyInterval<-aggregate(steps~interval, activity, mean)
 
@@ -41,9 +45,11 @@ with(averageStepsbyInterval, plot(interval, steps, type = "l"))
 
 averageStepsbyInterval[which.max(averageStepsbyInterval[,2]),1]
 
-
+```
 
 ## Imputing missing values
+
+```{r, echo = TRUE}
 
 missingIndex<-is.na(activity[,1])
 m<-mean(averageStepsbyInterval$steps)
@@ -62,10 +68,12 @@ median_afterImput
 
 
 
-
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
+
+```{r, echo = TRUE}
 activity1$date<-as.Date(activity1$date)
 library(dplyr)
 activity2<-activity1%>%
@@ -86,5 +94,5 @@ with(averageStepByDayTypeAndInterval,
       xlab = "Daily Intervals",
       ylab = "Average Number of Steps"))
       
-
+```
 
